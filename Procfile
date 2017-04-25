@@ -1,1 +1,1 @@
-web: gunicorn Supervoices.wsgi
+web: gunicorn Supervoices.wsgi --log-file -
