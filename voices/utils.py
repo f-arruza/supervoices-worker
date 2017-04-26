@@ -96,14 +96,13 @@ def convertAudioDynamoDB(voice_id, input_file, author_firstname, author_email,
                          competition_name):
     # Convertir Archivo de Audio
     input_file_tmp = settings.MEDIA_TMP + str(uuid.uuid1())
-    print(input_file_tmp)
 
     output_file_name = str(uuid.uuid1()) + '.mp3'
     output_file = settings.MEDIA_TMP + output_file_name
-    print(output_file)
 
     # Convertir Archivo de audio a MP3
     cmd0 = 'wget ' + input_file + ' -O ' + input_file_tmp
+    subprocess.call(cmd0, shell=True)
 
     cmd = settings.FFMPEG_PATH + ' -i ' + input_file_tmp
     cmd = cmd + ' -map_metadata 0:s:0 -y ' + output_file
