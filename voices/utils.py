@@ -95,12 +95,15 @@ def convertAudio(voice):
 def convertAudioDynamoDB(voice_id, input_file, author_firstname, author_email,
                          competition_name):
     # Convertir Archivo de Audio
-    output_file_name = str(uuid.uuid1()) + '.mp3'
+    input_file_tmp = settings.MEDIA_TMP + str(uuid.uuid1())
 
+    output_file_name = str(uuid.uuid1()) + '.mp3'
     output_file = settings.MEDIA_TMP + output_file_name
 
     # Convertir Archivo de audio a MP3
-    cmd = settings.FFMPEG_PATH + ' -i ' + input_file
+    cmd0 = 'wget ' + input_file + ' -O ' + input_file_tmp
+
+    cmd = settings.FFMPEG_PATH + ' -i ' + input_file_tmp
     cmd = cmd + ' -map_metadata 0:s:0 -y ' + output_file
     subprocess.call(cmd, shell=True)
 
@@ -124,6 +127,10 @@ def convertAudioDynamoDB(voice_id, input_file, author_firstname, author_email,
     else:
         print('The upload failed...')
 
+    # Borrar archivo de entrada temporal
+    if os.path.exists(input_file_tmp):
+        os.remove(input_file_tmp)
+    
     # Borrar archivo MP3 temporal
     if os.path.exists(output_file):
         os.remove(output_file)

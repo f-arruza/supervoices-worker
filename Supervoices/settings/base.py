@@ -102,7 +102,7 @@ USE_L10N = True
 USE_TZ = True
 
 # Config Ffmpeg
-FFMPEG_PATH = '/usr/bin/ffmpeg'
+FFMPEG_PATH = 'ffmpeg'
 
 # Config Celery
 CELERY_TIMEZONE = 'America/Bogota'
