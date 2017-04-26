@@ -14,6 +14,7 @@ django-fontawesome==0.2.6
 django-storages==1.5.0
 django-ses-gateway==0.1.1
 django-elasticache==1.0.1
+django-pylibmc==0.6.1
 djangorestframework==3.3.3
 gunicorn==18.0
 kombu==3.0.37
