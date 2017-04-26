@@ -43,7 +43,7 @@ DEFAULT_FILE_STORAGE = 'Supervoices.custom_storages.MediaStorage'
 MEDIA_TMP = BASE_DIR + '/tmp/'
 
 # Memcached Config
-CACHES = {
+"""CACHES = {
     'default': {
         'BACKEND': 'django_elasticache.memcached.ElastiCache',
         'LOCATION': 'svs-cache.qzzrzn.cfg.use1.cache.amazonaws.com:11211',
@@ -51,4 +51,4 @@ CACHES = {
             'IGNORE_CLUSTER_ERRORS': [True, False],
         },
     }
-}
+}"""
