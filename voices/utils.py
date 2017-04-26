@@ -116,7 +116,7 @@ def convertAudioDynamoDB(voice_id, input_file, author_firstname, author_email,
         print('It worked!')
 
         # Actualizar registro en base de datos
-        update_voice(voice_id, settings.MEDIA_NODE_URL + output_file_name)
+        update_voice(voice_id, output_file_name)
 
         # Enviar notificación al author_firstname
         result = send_email_convert_audio(author_firstname, author_email,
