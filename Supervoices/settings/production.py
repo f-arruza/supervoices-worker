@@ -12,10 +12,10 @@ BROKER_URL = BROKER_URL + AWS_SECRET_ACCESS_KEY + '@'
 
 # Email Account Config
 EMAIL_USE_TLS = True
-EMAIL_HOST = 'email-smtp.us-east-1.amazonaws.com'
-EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER']
-EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
-EMAIL_PORT = 25
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = os.environ['SENDGRID_USERNAME']
+EMAIL_HOST_PASSWORD = os.environ['SENDGRID_PASSWORD']
+EMAIL_PORT = 587
 EMAIL_FROM_MAIL = 'freeven2016@gmail.com'
 
 # S3 Config
