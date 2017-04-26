@@ -96,9 +96,11 @@ def convertAudioDynamoDB(voice_id, input_file, author_firstname, author_email,
                          competition_name):
     # Convertir Archivo de Audio
     input_file_tmp = settings.MEDIA_TMP + str(uuid.uuid1())
+    print(input_file_tmp)
 
     output_file_name = str(uuid.uuid1()) + '.mp3'
     output_file = settings.MEDIA_TMP + output_file_name
+    print(output_file)
 
     # Convertir Archivo de audio a MP3
     cmd0 = 'wget ' + input_file + ' -O ' + input_file_tmp
@@ -130,7 +132,7 @@ def convertAudioDynamoDB(voice_id, input_file, author_firstname, author_email,
     # Borrar archivo de entrada temporal
     if os.path.exists(input_file_tmp):
         os.remove(input_file_tmp)
-    
+
     # Borrar archivo MP3 temporal
     if os.path.exists(output_file):
         os.remove(output_file)
