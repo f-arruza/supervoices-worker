@@ -11,6 +11,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.authtoken.models import Token
 from .serializers import UserSerializer
 from django.db import IntegrityError
+from django.core.cache import cache
 
 
 @csrf_exempt
@@ -19,12 +20,13 @@ def verify_token(request):
         token_param = request.POST.get('token')
         try:
             token = Token.objects.get(key=token_param)
-            status = {'user': token.user.id,}
+            cache.get(token.user.username)
+            status = {'user': token.user.id}
         except:
-            status = {'user': 'Invalid Token',}
+            status = {'user': 'Invalid Token'}
         return JsonResponse(status)
     else:
-        status = {'user': '0',}
+        status = {'user': '0'}
         return JsonResponse(status)
 
 
@@ -79,6 +81,8 @@ def login_user_to_json(user):
         token = Token.objects.create(user=user)
     except:
         token = Token.objects.get(user__id=user.id)
+
+    cache.set(user.username, token)
 
     json_data = {
         'first_name': user.first_name,
