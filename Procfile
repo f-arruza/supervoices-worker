@@ -1,2 +1,2 @@
 web: gunicorn Supervoices.wsgi --log-file -
-worker: python manage.py celery -A Supervoices worker -l info
+worker: NEW_RELIC_CONFIG_FILE=newrelic.ini newrelic-admin run-program python manage.py celery -A Supervoices worker -l info
