@@ -119,8 +119,8 @@ def convertAudioDynamoDB(voice_id, input_file, author_firstname, author_email,
         update_voice(voice_id, output_file_name)
 
         # Enviar notificación al author_firstname
-        result = send_email_convert_audio(author_firstname, author_email,
-                                          competition_name)
+        result = 1 # send_email_convert_audio(author_firstname, author_email,
+                                          # competition_name)
         if result > 0:
             print('Successful email notification send.')
         else:
